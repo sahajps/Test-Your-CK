@@ -1,0 +1,10 @@
+export const CULTURES = ['chinese','japanese','korean','vietnamese','pakistani','indian','western'] as const;
+export const ASIAN_CULTURES = CULTURES.filter(c=>c!=='western');
+export const GROUPS = ['authors','beverage','food','locations','names','sports'] as const;
+export type Culture = typeof CULTURES[number];
+export type Group = typeof GROUPS[number];
+export type Difficulty = 'easy'|'standard'|'hard';
+export type EntityType = Exclude<Group,'names'>|'names_m'|'names_f';
+export type Pool = {culture:Culture;types:Record<EntityType,string[]>};
+export type Option = {id:string;en:string;culture:Culture};
+export type Round = {id:string;group:Group;type:EntityType;options:Option[];correctIndex:number};

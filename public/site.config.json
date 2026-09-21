@@ -1,0 +1,12 @@
+{
+  "posterNumber": "#F11",
+  "voteUrl": "",
+  "paperUrl": "https://arxiv.org/abs/2510.05291",
+  "posterUrl": "",
+  "repoUrl": "",
+  "gameRepoUrl": "",
+  "rounds": 12,
+  "timerSeconds": 15,
+  "minPool": 10,
+  "showNativeOnReveal": false
+}

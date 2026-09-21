@@ -1,0 +1,1 @@
+# One normalized English key per line. Lines beginning with # are ignored.

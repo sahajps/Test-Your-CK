@@ -1,0 +1,69 @@
+{
+  "dataVersion": "f4b3b6477b8c",
+  "generated": "2026-09-21",
+  "counts": {
+    "chinese": {
+      "authors": 162,
+      "beverage": 178,
+      "food": 363,
+      "locations": 997,
+      "names_m": 718,
+      "names_f": 796,
+      "sports": 111
+    },
+    "japanese": {
+      "authors": 259,
+      "beverage": 108,
+      "food": 611,
+      "locations": 794,
+      "names_m": 253,
+      "names_f": 262,
+      "sports": 315
+    },
+    "korean": {
+      "authors": 600,
+      "beverage": 99,
+      "food": 414,
+      "locations": 1252,
+      "names_m": 882,
+      "names_f": 856,
+      "sports": 260
+    },
+    "vietnamese": {
+      "authors": 24,
+      "beverage": 65,
+      "food": 368,
+      "locations": 92,
+      "names_m": 190,
+      "names_f": 121,
+      "sports": 49
+    },
+    "pakistani": {
+      "authors": 43,
+      "beverage": 5,
+      "food": 44,
+      "locations": 165,
+      "names_m": 293,
+      "names_f": 137,
+      "sports": 17
+    },
+    "indian": {
+      "authors": 204,
+      "beverage": 32,
+      "food": 573,
+      "locations": 175,
+      "names_m": 629,
+      "names_f": 541,
+      "sports": 137
+    },
+    "western": {
+      "authors": 363,
+      "beverage": 499,
+      "food": 430,
+      "locations": 370,
+      "names_m": 579,
+      "names_f": 570,
+      "sports": 2234
+    }
+  }
+}

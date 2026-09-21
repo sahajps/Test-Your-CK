@@ -1,0 +1,10 @@
+import {describe,expect,it} from 'vitest';import {composition,generateSession,groupAccuracy,scoreAnswer} from './game';import {CULTURES,type Pool} from './types';
+const vals=(c:string,t:string,n=30)=>Array.from({length:n},(_,i)=>`${c} ${t} ${i}`);
+const pools:Pool[]=CULTURES.map(c=>({culture:c,types:{authors:vals(c,'author'),beverage:vals(c,'drink'),food:vals(c,'food'),locations:vals(c,'place'),names_m:vals(c,'male'),names_f:vals(c,'female'),sports:vals(c,'sport')}}));
+describe('engine',()=>{
+ it('is deterministic and produces valid rounds',()=>{const a=generateSession({culture:'korean',difficulty:'hard',seed:'abc',pools});const b=generateSession({culture:'korean',difficulty:'hard',seed:'abc',pools});expect(a).toEqual(b);expect(a).toHaveLength(12);for(const r of a){expect(r.options).toHaveLength(4);expect(r.options.filter(o=>o.culture==='korean')).toHaveLength(1);expect(new Set(r.options.map(o=>o.en)).size).toBe(4);if(r.group==='names')expect(r.options.every(o=>o.id.includes(r.type))).toBe(true)}});
+ it('obeys distractor modes',()=>{for(const d of ['easy','standard','hard'] as const){const r=generateSession({culture:'chinese',difficulty:d,seed:d,pools})[0];const ds=r.options.filter(o=>o.culture!=='chinese');expect(ds.filter(o=>o.culture==='western')).toHaveLength(d==='easy'?3:d==='standard'?2:1);}});
+ it('does not reuse entities',()=>{const r=generateSession({culture:'indian',difficulty:'standard',seed:'x',pools});expect(new Set(r.flatMap(x=>x.options.map(o=>o.en))).size).toBe(48)});
+ it('handles a small group',()=>{const p=structuredClone(pools);p.find(x=>x.culture==='vietnamese')!.types.authors=vals('v','a',3);expect(composition('vietnamese',p,12).some(x=>x.group==='authors')).toBe(false);expect(generateSession({culture:'vietnamese',difficulty:'easy',seed:'s',pools:p})).toHaveLength(12)});
+ it('scores and groups correctly',()=>{expect(scoreAnswer(true,12,0)).toBe(150);expect(scoreAnswer(true,12,4)).toBe(300);expect(scoreAnswer(false,12,4)).toBe(0);const r=generateSession({culture:'japanese',difficulty:'easy',seed:'g',pools});expect(Object.values(groupAccuracy(r,r.map(()=>true))).filter(x=>x===100).length).toBe(6)});
+});

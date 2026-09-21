@@ -1,0 +1,28 @@
+{
+  "name": "test-your-ck",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "data:build": "tsx scripts/build-data.ts",
+    "data:report": "tsx scripts/report-data.ts",
+    "data:validate": "tsx scripts/validate-data.ts",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "preact": "^10.27.2",
+    "qrcode-generator": "^2.0.4"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.10.2",
+    "@types/node": "^26.6.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4",
+    "xlsx": "^0.18.5"
+  }
+}
